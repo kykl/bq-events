@@ -1,0 +1,22 @@
+[
+    {
+        "type": "STRING",
+        "name": "appId",
+        "mode": "REQUIRED"
+    },
+    {
+        "type": "STRING",
+        "name": "funnel",
+        "mode": "REQUIRED"
+    },
+    {
+        "type": "STRING",
+        "name": "step",
+        "mode": "REQUIRED"
+    },
+    {
+        "type": "INTEGER",
+        "name": "sequence",
+        "mode": "REQUIRED"
+    }
+]
