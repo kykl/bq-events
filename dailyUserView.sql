@@ -1,6 +1,6 @@
 -- dailyUserView
 select
-    a.dt dt, a.appId appId, a.d0UserId d0UserId,
+    a.appId appId, a.d0UserId d0UserId,
     a.d1UserId d1UserId, a.d2UserId d2UserId, a.d3UserId d3UserId, a.d7UserId d7UserId, a.d14UserId d14UserId, a.d30UserId d30UserId,
     a.d0_6UserId d0_6UserId,
     a.d0_29UserId d0_29UserId,
@@ -8,8 +8,9 @@ select
     a.d8_14UserId d8_14UserId,
     a.d15_30UserId d15_30UserId,
     a.d30PlusUserId d30PlusUserId,
-    if(acquiredDt is not null, 'Yes', 'No') newUser,
+    a.dt dt,
     FORMAT_UTC_USEC(a.dt) dtTimestamp,
+    if(acquiredDt is not null, 'Yes', 'No') newUser,
     n.acquisitionChannel acquisitionChannel,
     n.platform platform,
     n.language language,

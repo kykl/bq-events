@@ -1,0 +1,52 @@
+[
+    {
+        "type": "STRING",
+        "name": "id",
+        "mode": "NULLABLE"
+    },
+    {
+        "type": "STRING",
+        "name": "name",
+        "mode": "NULLABLE"
+    },
+    {
+        "type": "TIMESTAMP",
+        "name": "createdAt",
+        "mode": "NULLABLE"
+    },
+    {
+        "type": "TIMESTAMP",
+        "name": "collectedAt",
+        "mode": "NULLABLE"
+    },
+    {
+        "type": "STRING",
+        "name": "userId",
+        "mode": "NULLABLE"
+    },
+    {
+        "type": "STRING",
+        "name": "sessionId",
+        "mode": "NULLABLE"
+    },
+    {
+        "type": "STRING",
+        "name": "platform",
+        "mode": "NULLABLE"
+    },
+    {
+        "type": "STRING",
+        "name": "language",
+        "mode": "NULLABLE"
+    },
+    {
+        "type": "STRING",
+        "name": "appId",
+        "mode": "NULLABLE"
+    },
+    {
+        "type": "STRING",
+        "name": "json",
+        "mode": "NULLABLE"
+    }
+]
