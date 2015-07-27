@@ -27,7 +27,7 @@ from
       f.sequence stepSequence,
       LAG(stepSequence, 1) OVER (PARTITION BY userId ORDER BY createdAt) prevStepSequence,
       date(e.createdAt) dt
-    from [insight.eventFunnel] e
+    from [insight.progressView] e
     join [insight.funnelConfig] f
     on (e.appId = f.appId and e.name = f.step)
   )
