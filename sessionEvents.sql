@@ -15,31 +15,19 @@ SELECT
   *
 FROM (
   SELECT
-    ROW_NUMBER() OVER (PARTITION BY sessionKey ORDER BY createdAt) rowNumber,
-    COUNT(*) OVER (PARTITION BY sessionKey ORDER BY createdAt) numOfEvents,
+    ROW_NUMBER() OVER (PARTITION BY sessionKey ORDER BY ts) rowNumber,
+    COUNT(*) OVER (PARTITION BY sessionKey ORDER BY ts) numOfEvents,
     sessionKey,
-    id,
-    name,
-    createdAt,
-    collectedAt,
-    userId,
-    sessionId,
-    platform,
-    language,
-    appId
+    dt, ts, userId, appId,
+    newUser,platform, language, segment, age, gender, city, country, channel, acquiredAt, acquiredDate, acquisitionChannel
   FROM (
     SELECT
-      DATE(e.createdAt) dt,
       HASH(CONCAT(e.sessionId, e.appId, '|', e.userId, '|', DATE(e.createdAt))) sessionKey,
-      e.id id,
-      e.name name,
-      e.createdAt createdAt,
-      e.collectedAt collectedAt,
-      e.userId userId,
-      e.sessionId sessionId,
-      e.platform platform,
-      e.language language,
-      e.appId appId
+      timestamp(date(e.createdAt)) dt, e.createdAt ts, e.userId userId, e.appId appId,
+      if(s.acquiredAt is not null, 'Yes', 'No') newUser,
+      s.platform platform, s.language language, s.segment segment, s.age age,
+      s.gender gender, s.city city, s.country country, s.channel channel, s.acquiredAt acquiredAt,
+      s.acquiredDate acquiredDate, s.acquisitionChannel acquisitionChannel
     FROM [insight.event] e
     LEFT JOIN [insight.sessionView] s
     ON (e.appId = s.appId AND e.userId = s.userId AND e.sessionId = s.sessionId)
